@@ -1,20 +1,33 @@
 {
   "name": "exchange",
   "version": "1.0.0",
-  "description": "order book",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/swtc-ca/exchange.git"
+    "build": "webpack",
+    "start": "npm run build && node dist/bundle.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/swtc-ca/exchange/issues"
+  "dependencies": {
+    "axios": "~0.18.0",
+    "blessed-vue": "^2.0.1",
+    "bluebird": "^3.5.3",
+    "faker": "^4.1.0",
+    "jingtum-lib": "^1.4.2",
+    "moment": "^2.23.0",
+    "pretty-seconds": "^0.2.1",
+    "systeminformation": "~3.52.2",
+    "terminal.js": "^1.0.10",
+    "vuex": "^3.0.1"
   },
-  "homepage": "https://github.com/swtc-ca/exchange#readme"
+  "devDependencies": {
+    "css-loader": "^2.1.0",
+    "vue-loader": "^15.5.1",
+    "vue-template-compiler": "^2.5.22",
+    "webpack": "^4.28.4",
+    "webpack-node-externals": "^1.7.2",
+    "webpack-cli": "^3.2.1"
+  }
 }
