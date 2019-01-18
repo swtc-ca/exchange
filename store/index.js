@@ -13,11 +13,11 @@ BlessedVue.use(Vuex)
 // each Vuex instance is just a single state tree.
 const state = {
   logs: '',
-  orderAsks: [],
-  orderBids: [],
+  order_asks: [],
+  order_bids: [],
   logsList: [],
-  wallet_one: {},
-  wallet_two: {},
+  wallet_one: { secret: 'sh3J3iB1ZTM9zqpYQTdi2YZL5f8Yx', address: 'jPjo5KEafx9RLmv3HwoUCh9M9VvjJ7EZf9' },
+  wallet_two: { secret: 'sshD7uwhUNtYx6dkBSP6a8ajEfEwk', address: 'jnar4SMhygqeEv4B4EJn3zNbCwuxDTV9Bb' },
   wss1: 'wss://c05.jingtum.com:5443',
   wss2: 'wss://c04.jingtum.com:5443',
   api: 'https://api.jingtum.com',
