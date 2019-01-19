@@ -9,7 +9,11 @@ function jsonParam(obj) {
 	return JSON.stringify(obj)
 }
 
-function postRequest(url, content) {
+function getRequest(url, config={}) {
+	//if (!url) return axios.post('http://icp1x13.platformlab.ibm.com:8000/longevity/', content)
+	return axios.get(url, config)
+}
+function postRequest(url, content, config={}) {
 	//if (!url) return axios.post('http://icp1x13.platformlab.ibm.com:8000/longevity/', content)
 	return axios.post(url, content)
 }
@@ -98,6 +102,7 @@ module.exports = {
 	readStream,
 	writeStream,
 	jsonParam,
+	getRequest,
 	postRequest,
 	castString,
 	delay,

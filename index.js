@@ -31,7 +31,19 @@ var run_vue = async () => {
 }
 
 var main = async () => {
-	await check_config()
+	try {
+		let connect_result1 = await store.state.remote1.connectAsync()
+		console.log(connect_result1)
+		store.commit('appendLog', 'remote1 connected')
+		let connect_result2 = await store.state.remote2.connectAsync()
+		console.log(connect_result2)
+		store.commit('appendLog', 'remote2 connected')
+		await check_config()
+	} catch (error) {
+		store.commit('appendLog','error occurs')
+		console.log(error)
+		process.exit(1)
+	}
 	run_vue()
 }
 
