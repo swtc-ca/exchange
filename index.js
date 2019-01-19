@@ -3,17 +3,21 @@ import Dashboard from './components/dashboard.vue'
 import store from './store'
 const el = Vue.dom.createElement()
 Vue.dom.append(el)
-var helper = require('./helper')
-var config = require('./config')
+const helper = require('./helper')
+const config = require('./config')
 const JingtumLib = require('jingtum-lib')
 const Wallet = JingtumLib.Wallet
 
-var logledger = msg => {
-	store.commit('appendLog',`${msg.ledger_index}\t${msg.ledger_hash}`)
+const options_swt_cny = { limit: store.state.orderbook_limit, gets: store.state.currency_swt, pays: store.state.currency_cny }
+const logledger = msg => {
+	store.commit('appendLog',`LEDGER: ${msg.ledger_index}\ttxns: ${msg.txn_count}`)
+	//store.dispatch('appendLog', JSON.stringify(msg,'',2))
 }
-var logtransaction = msg => {
+
+const logtransaction = msg => {
 	if ( msg.transaction.TransactionType.includes('Offer') ) {
-		store.commit('appendLog',`${msg.ledger_index}\t${msg.transaction.Sequence}\t${msg.transaction.TransactionType}`)
+		//store.commit('appendLog',`${msg.ledger_index}\t${msg.transaction.Sequence}\t${msg.transaction.TransactionType}`)
+		//store.commit('appendLog',JSON.stringify(msg, '', 2))
 	}
 }
 
@@ -25,7 +29,7 @@ var check_config = async () => {
 	store.state.wallet_two = Object.assign({}, config.wallet_two)
   }
   console.log(config)
-  await helper.delay(2000)
+  //await helper.delay(2000)
 }
 
 var run_vue = async () => {
@@ -44,6 +48,11 @@ var main = async () => {
 		let connect_result1 = await store.state.remote1.connectAsync()
 		console.log(connect_result1)
 		store.commit('appendLog', 'remote1 connected')
+		let orderbooks = await store.state.remote1.requestOrderBook(options_swt_cny).submitAsync()
+		store.dispatch('appendLog',`... ${orderbooks.offers.length} orderbook retrieved`)
+		orderbooks.offers.forEach( (orderbook) => {
+			store.dispatch('appendOrder',orderbook)
+		})
 		store.state.remote1.on('transactions', logtransaction)
 		store.state.remote1.on('ledger_closed', logledger)
 		//let connect_result2 = await store.state.remote2.connectAsync()

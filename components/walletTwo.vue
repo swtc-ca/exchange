@@ -11,11 +11,11 @@ import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
 	name: 'wallet-two',
 	computed: {
-		...mapState(['currency_swt', 'currency_cny', 'currency_vcc', 'currency_jcc','logs', 'remote1'],),
+		...mapState(['currency_swt', 'currency_cny', 'currency_vcc', 'currency_jcc','logs', 'remote1', 'remote2', 'wallet_one', 'wallet_two'],),
 		...mapGetters(['walletTwo'],),
 	},
 	methods: { 
-		...mapActions(['appendLog', 'appendOrder']),
+		...mapActions(['appendLog', 'appendOrder', 'updateWallet']),
 	},
 	data: () => {
 		return {
@@ -32,6 +32,7 @@ export default {
 		}
 	},
 	mounted () {
+		this.updateWallet(this.wallet_two.address)
 	}
 }
 </script>

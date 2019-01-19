@@ -41,24 +41,6 @@ export default {
 		this.$refs.screen.key(['C-c'], () => {
 			process.exit(0)
 		})
-		var options_swt_cny = {
-			limit: 20,
-			gets: this.currency_swt,
-			pays: this.currency_cny
-		}
-		var async_ops = async () => {
-			try {
-				let orderbooks = await this.remote1.requestOrderBook(options_swt_cny).submitAsync()
-				this.appendLog(`... ${orderbooks.offers.length} orderbook retrieved`)
-				orderbooks.offers.forEach( (orderbook) => {
-					this.appendOrder(orderbook)
-				})
-			} catch (error) {
-				this.appendLog('error occurs')
-				this.appendLog(JSON.stringify(error,'',2))
-			}
-		}
-		async_ops()
 	}
 }
 </script>

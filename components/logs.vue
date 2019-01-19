@@ -1,5 +1,5 @@
 <template>
-  <log ref='asks' :blessed='true' :content="logs" align="left" valign="center" :border="{ type: 'line' }" :style="logStyle" top="60%" left="30%" width="40%" height="40%"/>
+  <log ref='asks' :blessed='true' :content="logs" align="left" valign="center" :border="{ type: 'line' }" :style="logStyle" top="top" left="30%" width="40%" height="100%"/>
 </template>
 
 <script>

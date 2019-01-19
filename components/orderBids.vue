@@ -1,5 +1,5 @@
 <template>
-	<log ref='bids' :blessed='true' :content="orderBids" align="right" valign="center" :border="{ type: 'line' }" :style="logStyle" top="top" left="50%" width="50%" height="60%"/>
+	<log ref='bids' :blessed='true' :content="orderBids" align="right" valign="center" :border="{ type: 'line' }" :style="logStyle" top="top" left="70%" width="30%" height="60%"/>
 </template>
 
 <script>
