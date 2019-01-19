@@ -9,6 +9,7 @@ var Remote = JingtumLib.Remote
 
 BlessedVue.use(Vuex)
 
+
 // root state object.
 // each Vuex instance is just a single state tree.
 const state = {
@@ -53,6 +54,12 @@ const mutations = {
 	},
 	appendOrderBids (state, message) {
 		state.order_bids.push(message)
+	},
+	remote1On (state, eventname, func) {
+		state.remote1.on(eventname, func)
+	},
+	remote2On (state, eventname, func) {
+		state.remote2.on(eventname, func)
 	}
 }
 

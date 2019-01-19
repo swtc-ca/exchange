@@ -33,7 +33,7 @@ export default {
   mounted () {
     this.appendLog(`application started`)
     setInterval(() => {
-      this.appendLog(`${faker.name.findName()} called from ${faker.address.state()} ${prettySeconds(faker.random.number(3600))} ago.`)
+      //this.appendLog(`${faker.name.findName()} called from ${faker.address.state()} ${prettySeconds(faker.random.number(3600))} ago.`)
     }, 5000)
   }
 }

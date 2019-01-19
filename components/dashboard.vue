@@ -49,9 +49,8 @@ export default {
 		var async_ops = async () => {
 			try {
 				let orderbooks = await this.remote1.requestOrderBook(options_swt_cny).submitAsync()
-				this.appendLog('orderbook retrieved')
+				this.appendLog(`... ${orderbooks.offers.length} orderbook retrieved`)
 				orderbooks.offers.forEach( (orderbook) => {
-					this.appendLog(orderbook.Account)
 					this.appendOrder(orderbook)
 				})
 			} catch (error) {
