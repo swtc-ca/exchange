@@ -1,5 +1,5 @@
 <template>
-	<log ref='two' :blessed='true' :content="walletTwo" align="left" valign="center" :border="{ type: 'line' }" :style="logStyle" top="60%" left="70%" width="30%" height="40%"/>
+	<log ref='two' :blessed='true' :content="walletInfoTwo" align="left" valign="center" :border="{ type: 'line' }" :style="logStyle" top="60%" left="70%" width="30%" height="40%"/>
 </template>
 
 <script>
@@ -12,7 +12,7 @@ export default {
 	name: 'wallet-two',
 	computed: {
 		...mapState(['currency_swt', 'currency_cny', 'currency_vcc', 'currency_jcc','logs', 'remote1', 'remote2', 'wallet_one', 'wallet_two'],),
-		...mapGetters(['walletTwo'],),
+		...mapGetters(['walletTwo', 'balanceTwo', 'walletInfoTwo']),
 	},
 	methods: { 
 		...mapActions(['appendLog', 'appendOrder', 'updateWallet']),
